@@ -184,8 +184,14 @@ public class CommandParser {
             logger.info("Executing Workload command.");
 
             if (words.length == 2) {
-                logger.info("Executing Workload command to view modules in semester" + "semester");
-                cmdObject = new Workload(currentUser, words[1]);
+                try {
+                    int semester = Integer.parseInt(words[1]);
+                    logger.info("Executing Workload command to view modules in semester " + semester);
+                    cmdObject = new Workload(currentUser, semester);
+                } catch (NumberFormatException e) {
+                    logger.warning("Invalid semester number: " + words[1]);
+                    // You could return an error message or throw an exception here
+                }
             } else {
                 logger.info("Executing Workload command to view all modules.");
                 cmdObject = new Workload(currentUser);

@@ -12,9 +12,9 @@ public class Workload implements Command {
         this.sem = 0;
     }
 
-    public Workload(User user, String semester) {
+    public Workload(User user, int semester) {
         this.currentUser = user;
-        this.sem = Integer.parseInt(semester);
+        this.sem = semester;
     }
 
     public void execute(int sem) {
