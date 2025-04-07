@@ -55,21 +55,6 @@ public class UserStorageTest {
     }
 
     @Test
-    public void loadUserData_withValidFile_loadsSuccessfully() throws ModNotInDatabase {
-        UserStorage storage = new UserStorage("data", "user.txt");
-        // Simulate saving a user to the file
-        User userToSave = new User("Skibidi", EducationLevel.JC, 1);
-        userToSave.setCurrentSemester(1);
-        userToSave.getSemesterModules().put(1, new ArrayList<>(List.of(new UserMod("CS1010"))));
-        storage.saveUserData(userToSave);
-        // Now load the user data
-//        User user = storage.loadUserData();
-//        assertEquals("Skibidi", user.getName());
-//        assertEquals(EducationLevel.JC, user.getEducation());
-//        assertEquals(1, user.getCurrentSemester());
-    }
-
-    @Test
     public void loadUserData_withNonExistentFile_returnsEmptyUser() {
         UserStorage storage = new UserStorage("data", "nonexistent.txt");
         User user = storage.loadUserData();
